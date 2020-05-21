@@ -32,3 +32,46 @@ See the classroom instruction and code comments for more details on each of thes
 2. Make a build directory in the top level directory: `mkdir build && cd build`
 3. Compile: `cmake .. && make`
 4. Run it: `./2D_feature_tracking`.
+
+
+## Report
+
+
+
+| Detector | Descriptor | Keypoints | Detection Time (ms) | Descriptor Extraction Time (ms) | Matches | Match / ms |
+| ---   | ---  | --- | --- | --- | --- | --- |
+| SHITOMASI | BRISK| 117| 16| 385| 76| 0.189526|
+| SHITOMASI | BRIEF| 117| 16| 1| 90| 5.29412|
+| SHITOMASI | ORB| 117| 17| 0| 85| 5|
+| SHITOMASI | FREAK| 117| 12| 46| 63| 1.08621|
+| SHITOMASI | SIFT| 117| 11| 16| 103| 3.81481|
+| HARRIS | BRISK| 24| 16| 384| 11| 0.0275|
+| HARRIS | BRIEF| 24| 16| 0| 15| 0.9375|
+| HARRIS | ORB| 24| 16| 0| 15| 0.9375|
+| HARRIS | FREAK| 24| 16| 44| 10| 0.166667|
+| HARRIS | SIFT| 24| 18| 14| 18| 0.5625|
+| FAST | BRISK| 409| 1| 390| 203| 0.519182|
+| FAST | BRIEF| 409| 1| 1| 242| 121|
+| FAST | ORB| 409| 1| 1| 229| 114.5|
+| FAST | FREAK| 409| 1| 48| 174| 3.55102|
+| FAST | SIFT| 409| 1| 47| 309| 6.4375|
+| BRISK | BRISK| 276| 433| 389| 144| 0.175182|
+| BRISK | BRIEF| 276| 433| 1| 149| 0.343318|
+| BRISK | ORB| 276| 431| 4| 103| 0.236782|
+| BRISK | FREAK| 276| 430| 47| 121| 0.253669|
+| BRISK | SIFT| 276| 432| 61| 182| 0.369168|
+| ORB | BRISK| 116| 7| 386| 72| 0.183206|
+| ORB | BRIEF| 116| 7| 0| 50| 7.14286|
+| ORB | ORB| 116| 7| 4| 58| 5.27273|
+| ORB | FREAK| 116| 7| 45| 38| 0.730769|
+| ORB | SIFT| 116| 7| 70| 84| 1.09091|
+| AKAZE | AKAZE| 167| 101| 87| 130| 0.691489|
+| AKAZE | BRISK| 167| 109| 386| 123| 0.248485|
+| AKAZE | BRIEF| 167| 110| 0| 120| 1.09091|
+| AKAZE | ORB| 167| 109| 3| 102| 0.910714|
+| AKAZE | FREAK| 167| 106| 47| 108| 0.705882|
+| AKAZE | SIFT| 167| 99| 30| 141| 1.09302|
+| SIFT | BRISK| 138| 160| 375| 59| 0.11028|
+| SIFT | BRIEF| 138| 163| 0| 66| 0.404908|
+| SIFT | FREAK| 138| 160| 47| 56| 0.270531|
+| SIFT | SIFT| 138| 141| 91| 88| 0.37931|
