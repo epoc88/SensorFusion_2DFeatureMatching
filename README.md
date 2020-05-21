@@ -1,29 +1,34 @@
-| Detector | Descriptor | Keypoints | detection time (ms) | descriptor extraction time (ms) | Matches | Match per ms |
-| ---   | ---  | --- | --- | --- | --- | --- |
-| SHITOMASI | BRISK| 117| 17| 333| 76| 0.217143|
-| SHITOMASI | BRIEF| 117| 17| 1| 90| 5|
-| SHITOMASI | ORB| 117| 17| 1| 85| 4.72222|
-| SHITOMASI | FREAK| 117| 12| 39| 63| 1.23529|
-| SHITOMASI | SIFT| 117| 13| 18| 103| 3.32258|
-| HARRIS | BRISK| 24| 17| 328| 11| 0.0318841|
-| HARRIS | BRIEF| 24| 16| 0| 15| 0.9375|
-| HARRIS | ORB| 24| 17| 0| 15| 0.882353|
-| HARRIS | FREAK| 24| 16| 39| 10| 0.181818|
-| HARRIS | SIFT| 24| 17| 16| 18| 0.545455|
-| FAST | BRISK| 409| 2| 331| 203| 0.60961|
-| FAST | BRIEF| 409| 2| 1| 242| 80.6667|
-| FAST | ORB| 409| 1| 1| 229| 114.5|
-| FAST | FREAK| 409| 2| 42| 174| 3.95455|
-| FAST | SIFT| 409| 2| 50| 309| 5.94231|
-| BRISK | BRIEF| 276| 372| 1| 149| 0.399464|
-| BRISK | ORB| 276| 371| 5| 103| 0.273936|
-| BRISK | FREAK| 276| 369| 41| 121| 0.295122|
-| BRISK | SIFT| 276| 370| 64| 182| 0.419355|
-| ORB | BRISK| 116| 7| 331| 72| 0.213018|
-| ORB | BRIEF| 116| 7| 0| 50| 7.14286|
-| ORB | FREAK| 116| 7| 40| 38| 0.808511|
-| ORB | SIFT| 116| 7| 74| 84| 1.03704|
-| SIFT | BRISK| 138| 174| 319| 59| 0.119675|
-| SIFT | BRIEF| 138| 174| 0| 66| 0.37931|
-| SIFT | FREAK| 138| 169| 41| 56| 0.266667|
-| FAST | BRISK| 409| 2| 330| 203| 0.611446|
+# SFND 2D Feature Tracking
+
+<img src="images/keypoints.png" width="820" height="248" />
+
+The idea of the camera course is to build a collision detection system - that's the overall goal for the Final Project. As a preparation for this, you will now build the feature tracking part and test various detector / descriptor combinations to see which ones perform best. This mid-term project consists of four parts:
+
+* First, you will focus on loading images, setting up data structures and putting everything into a ring buffer to optimize memory load. 
+* Then, you will integrate several keypoint detectors such as HARRIS, FAST, BRISK and SIFT and compare them with regard to number of keypoints and speed. 
+* In the next part, you will then focus on descriptor extraction and matching using brute force and also the FLANN approach we discussed in the previous lesson. 
+* In the last part, once the code framework is complete, you will test the various algorithms in different combinations and compare them with regard to some performance measures. 
+
+See the classroom instruction and code comments for more details on each of these parts. Once you are finished with this project, the keypoint matching part will be set up and you can proceed to the next lesson, where the focus is on integrating Lidar points and on object detection using deep-learning. 
+
+## Dependencies for Running Locally
+* cmake >= 2.8
+  * All OSes: [click here for installation instructions](https://cmake.org/install/)
+* make >= 4.1 (Linux, Mac), 3.81 (Windows)
+  * Linux: make is installed by default on most Linux distros
+  * Mac: [install Xcode command line tools to get make](https://developer.apple.com/xcode/features/)
+  * Windows: [Click here for installation instructions](http://gnuwin32.sourceforge.net/packages/make.htm)
+* OpenCV >= 4.1
+  * This must be compiled from source using the `-D OPENCV_ENABLE_NONFREE=ON` cmake flag for testing the SIFT and SURF detectors.
+  * The OpenCV 4.1.0 source code can be found [here](https://github.com/opencv/opencv/tree/4.1.0)
+* gcc/g++ >= 5.4
+  * Linux: gcc / g++ is installed by default on most Linux distros
+  * Mac: same deal as make - [install Xcode command line tools](https://developer.apple.com/xcode/features/)
+  * Windows: recommend using [MinGW](http://www.mingw.org/)
+
+## Basic Build Instructions
+
+1. Clone this repo.
+2. Make a build directory in the top level directory: `mkdir build && cd build`
+3. Compile: `cmake .. && make`
+4. Run it: `./2D_feature_tracking`.
