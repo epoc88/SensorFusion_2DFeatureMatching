@@ -169,17 +169,16 @@ Use cv::Rect::contains function to judge if the point is inside our ROI.
   	- Evaluation : The number of keypoints are listed for each image. Only the keypoints on the preceeding vehicle are considered.  
 
 	
-	  Detector |Img-1|	Img-2|Img-3	|Img-4	|Img-5	|Img-6	|Img-7	|Img-8	|Img-9	|Img-10
-	----|-----|-----|-------|-------|-------|-----|-------|-------|-------|------
-	**SHI-Tomasi**	|125|	118|	123|	120|	120|	113|	114|	123|	111|	112
-	**Harris**	|17	|14|	18|	21|	26|	43|	18|	31|	26|	34
-	**FAST**	|149|	152|	150|	155|	149|	149|	156|	150|	138|	143
-	**BRISK**	|264|	282|	282|	277|	297|	279|	289|	272|	266|	254
-	**ORB**		|92 |	102|	106|	113|	109|	125|	130|	129|	127|	128
-	**AKAZE**	|166|	157|	161|	155|	163|	164|	173|	175|	177|	179
-	**SIFT**	|138|	132|	124|	137|	134|	140|	137|	148|	159|	137
-
-  
+	Detector |Img-1| Img-2|Img-3 |Img-4 |Img-5 |Img-6 |Img-7 |Img-8	|Img-9	|Img-10  
+	---- |  -----  | -----|-------|-------|-------|-----|-------|-------|-------|------    
+	**SHI-Tomasi**	|125|	118|	123|	120|	120|	113|	114|	123|	111|	112    
+	**Harris**	|17 |    14|	18|	21|	26|	43|	18|	31|	26|	34  
+	**FAST**	|149|	152|	150|	155|	149|	149|	156|	150|	138|	143  
+	**BRISK**	|264|	282|	282|	277|	297|	279|	289|	272|	266|	254  
+	**ORB**		|92 |	102|	106|	113|	109|	125|	130|	129|	127|	128  
+	**AKAZE**	|166|	157|	161|	155|	163|	164|	173|	175|	177|	179  
+	**SIFT**	|138|	132|	124|	137|	134|	140|	137|	148|	159|	137  
+	  
  - #### MP.8 Performance Evaluation 2	
  	- Task : Count the number of matched keypoints for all 10 images using all possible combinations of detectors and descriptors. In the matching step, the BF approach is used with the descriptor distance ratio set to 0.8.
   	- Evaluation : Below is the table with the averages over all 10 images. 
