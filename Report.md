@@ -63,15 +63,14 @@ Use cv::Rect::contains function to judge if the point is inside our ROI.
 	 - Implementation : The descriptors are implemented in the `matching2D_Student.cpp` and `MidTermProject_Camera_Student.cpp`.
  In the `MidTermProject_Camera_Student.cpp` the descriptor is initialised and the `descriptorType` is set. The `descKeypoints(....)` in  `matching2D_Student.cpp` contains the actual keypoint description implementation with selector for `descriptorType`. And cv::DescriptorExtractor is used to extract the features.
  
- 	- In  `MidTermProject_Camera_Student.cpp` : 
- 
+ 	- In `MidTermProject_Camera_Student.cpp` : 
+
  ```
         cv::Mat descriptors;
         string descriptorType = "ORB"; // BRISK, BRIEF, ORB, FREAK, AKAZE, SIFT  
         descKeypoints(dataBuffer.rbegin()->keypoints, dataBuffer.rbegin()->cameraImg, descriptors, descriptorType);
  ```    
-	 - In  `matching2D_Student.cpp` : 
- 
+ 	- In  `matching2D_Student.cpp` : 
  ```
 	void descKeypoints(vector<cv::KeyPoint> &keypoints, cv::Mat &img, cv::Mat &descriptors, string descriptorType)
 	{
