@@ -66,8 +66,9 @@ Use cv::Rect::contains function to judge if the point is inside our ROI.
  ```    cv::Mat descriptors;
         string descriptorType = "ORB"; // BRISK, BRIEF, ORB, FREAK, AKAZE, SIFT  
         descKeypoints(dataBuffer.rbegin()->keypoints, dataBuffer.rbegin()->cameraImg, descriptors, descriptorType);
- ```   
- 	- In `matching2D_Student.cpp` : 
+ ```
+
+   - In `matching2D_Student.cpp` : 
  ```
 	void descKeypoints(vector<cv::KeyPoint> &keypoints, cv::Mat &img, cv::Mat &descriptors, string descriptorType)
 	{
@@ -105,7 +106,7 @@ Use cv::Rect::contains function to judge if the point is inside our ROI.
   
  - ####  MP.5 Descriptor Matching  and MP.6 Descriptor Distance Ratio 
  	- Task : Implement FLANN matching as well as k-nearest neighbor selection. Both methods must be selectable using the respective strings in the main function. Use the K-Nearest-Neighbor matching to implement the descriptor distance ratio test, which looks at the ratio of best vs. second-best match to decide whether to keep an associated pair of keypoints.
-  	- Implementation : The Brute Force matcher `MAT_BF` and FLANN matcher `MAT_FLANN` are implemented in the `matchDescriptors(....)` function (in `matching2D_Student.cpp`) and matcher type is selectable based on the string set in main file `MidTermProject_Camera_Student.cpp`. The matching task for the selected matcher type is implemented based on the selector type. Nearest neighbor (best match) `SEL_NN` and K-Nearest-Neighbor(KNN) `SEL_KNN` selection is implemented and is selectable based on the string set in main file `MidTermProject_Camera_Student.cpp`. For KNN , k = 2 and the matches are filtered using descriptor distance ratio test where the descriptor distance ratio threshold is 0.8 for matching. Select the distance type based on the feature type. Use L2 distance for SIFT, and Hamming distance for binary descriptors. 
+  	- Implementation : The Brute Force matcher `MAT_BF` and FLANN matcher `MAT_FLANN` are implemented in the `matchDescriptors(..)` function in `matching2D_Student.cpp` and matcher type is selectable based on the string set in main file `MidTermProject_Camera_Student.cpp`. The matching task for the selected matcher type is implemented based on the selector type. Nearest neighbor `SEL_NN` and K-Nearest-Neighbor(KNN) `SEL_KNN` selection are implemented and selectable based on the string set in main file `MidTermProject_Camera_Student.cpp`. For KNN , k = 2 and the matches are filtered using descriptor distance ratio test where the descriptor distance ratio threshold is 0.8 for matching. Select the distance type based on the feature type. Use L2 distance for SIFT, and Hamming distance for binary descriptors. 
 ```
       // Find best matches for keypoints in two camera images based on several matching methods
 	void matchDescriptors(vector<cv::KeyPoint> &kPtsSource, vector<cv::KeyPoint> &kPtsRef, cv::Mat &descSource, cv::Mat &descRef, vector<cv::DMatch> &matches, std::string descriptorType, string matcherType, string selectorType)
@@ -171,12 +172,12 @@ Use cv::Rect::contains function to judge if the point is inside our ROI.
 	  Detector |Img-1|	Img-2|Img-3	|Img-4	|Img-5	|Img-6	|Img-7	|Img-8	|Img-9	|Img-10
 	----|-----|-----|-------|-------|-------|-----|-------|-------|-------|------
 	**SHI-Tomasi**	|125|	118|	123|	120|	120|	113|	114|	123|	111|	112
-	**Harris**		|17	|	14|		18|		21|		26|		43|		18|		31|		26|		34
-	**FAST**		|149|	152|	150|	155|	149|	149|	156|	150|	138|	143
-	**BRISK**		|264|	282|	282|	277|	297|	279|	289|	272|	266|	254
-	**ORB**			|92	|	102|	106|	113|	109|	125|	130|	129|	127|	128
-	**AKAZE**		|166|	157|	161|	155|	163|	164|	173|	175|	177|	179
-	**SIFT**		|138|	132|	124|	137|	134|	140|	137|	148|	159|	137
+	**Harris**	|17	|14|	18|	21|	26|	43|	18|	31|	26|	34
+	**FAST**	|149|	152|	150|	155|	149|	149|	156|	150|	138|	143
+	**BRISK**	|264|	282|	282|	277|	297|	279|	289|	272|	266|	254
+	**ORB**		|92 |	102|	106|	113|	109|	125|	130|	129|	127|	128
+	**AKAZE**	|166|	157|	161|	155|	163|	164|	173|	175|	177|	179
+	**SIFT**	|138|	132|	124|	137|	134|	140|	137|	148|	159|	137
 
   
  - #### MP.8 Performance Evaluation 2	
