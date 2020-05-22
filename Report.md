@@ -67,9 +67,9 @@ Use cv::Rect::contains function to judge if the point is inside our ROI.
         cv::Mat descriptors;
         string descriptorType = "ORB"; // BRISK, BRIEF, ORB, FREAK, AKAZE, SIFT  
         descKeypoints(dataBuffer.rbegin()->keypoints, dataBuffer.rbegin()->cameraImg, descriptors, descriptorType);
-       ```
+   		```    
        - In  `matching2D_Student.cpp` : 
-       ```
+     		```
 	void descKeypoints(vector<cv::KeyPoint> &keypoints, cv::Mat &img, cv::Mat &descriptors, string descriptorType)
 	{
 	    // select appropriate descriptor
@@ -101,7 +101,7 @@ Use cv::Rect::contains function to judge if the point is inside our ROI.
 	    t = ((double)cv::getTickCount() - t) / cv::getTickFrequency();
 	    cout << descriptorType << " descriptor extraction in " << 1000 * t / 1.0 << " ms" << endl;
 	}
-
+		```
   
  - ####  MP.5 Descriptor Matching  and MP.6 Descriptor Distance Ratio 
  	- Task : Implement FLANN matching as well as k-nearest neighbor selection. Both methods must be selectable using the respective strings in the main function. Use the K-Nearest-Neighbor matching to implement the descriptor distance ratio test, which looks at the ratio of best vs. second-best match to decide whether to keep an associated pair of keypoints.
@@ -162,7 +162,7 @@ Use cv::Rect::contains function to judge if the point is inside our ROI.
 		cout << "# keypoints removed = " << knn_matches.size() - matches.size() << endl;
 	    }
 	}
-        
+        		```
   
  - ####  MP.7 Performance Evaluation 1	
  	- Task : Count the number of keypoints on the preceding vehicle for all 10 images and take note of the distribution of their neighborhood size. Do this for all the detectors you have implemented.
@@ -196,8 +196,8 @@ Use cv::Rect::contains function to judge if the point is inside our ROI.
 
  
  -  #### MP.9 Performance Evaluation 3	
- 	- Task : Log the time it takes for keypoint detection and descriptor extraction. The results must be entered into a spreadsheet and based on this data, the TOP3 detector / descriptor combinations must be recommended as the best choice for our purpose of detecting keypoints on vehicles.
-  	- Evaluation : The above table lists the average time for keypoint detection and descriptor extraction over all 10 images.
+ - Task : Log the time it takes for keypoint detection and descriptor extraction. The results must be entered into a spreadsheet and based on this data, the TOP3 detector / descriptor combinations must be recommended as the best choice for our purpose of detecting keypoints on vehicles.
+ - Evaluation : The above table lists the average time for keypoint detection and descriptor extraction over all 10 images.
 
 | Detector\Descriptor | BRISK | BRIEF | ORB | FREAK | AKAZE | SIFT |
 | --- | --- | --- |--- |--- |--- |--- |
@@ -210,7 +210,7 @@ Use cv::Rect::contains function to judge if the point is inside our ROI.
 | **SIFT** | 124.09 |146.49|Out of Memory|188.17|N/A|181.0381|
 
 
-	- TOP3 detector / descriptor combinations are chosen based on the achieve minimal processing time with significant matches. 
+- TOP3 detector / descriptor combinations are chosen based on the achieve minimal processing time with significant matches. 
 	
 DETECTOR/DESCRIPTOR  | NUMBER OF KEYPOINTS | TIME
 -------------------- | --------------------| --------
@@ -218,7 +218,3 @@ FAST+BRIEF           | 1099 keypoints    | 1,87 ms
 FAST+ORB             | 1071 keypoints    | 2.03 ms 
 FAST+BRISK           | 899 keypoints     | 3.36 ms 
 -------------
-	
-
-
-
