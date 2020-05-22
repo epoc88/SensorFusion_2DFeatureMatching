@@ -59,17 +59,20 @@ Use cv::Rect::contains function to judge if the point is inside our ROI.
         }
       ```
   - ####  MP.4 Keypoint Descriptors
-  	- Task : Implement descriptors BRIEF, ORB, FREAK, AKAZE and SIFT and make them selectable by setting a string accordingly.
-  	- Implementation : The descriptors are implemented in the `matching2D_Student.cpp` and `MidTermProject_Camera_Student.cpp`.
-  	In the `MidTermProject_Camera_Student.cpp` the descriptor is initialised and the `descriptorType` is set. The `descKeypoints(....)` in  `matching2D_Student.cpp` contains the actual keypoint description implementation with selector for `descriptorType`. And cv::DescriptorExtractor is used to extract the features.
-    	- In  `MidTermProject_Camera_Student.cpp` : 
-       ```
+ 	- Task : Implement descriptors BRIEF, ORB, FREAK, AKAZE and SIFT and make them selectable by setting a string accordingly.
+	 - Implementation : The descriptors are implemented in the `matching2D_Student.cpp` and `MidTermProject_Camera_Student.cpp`.
+ In the `MidTermProject_Camera_Student.cpp` the descriptor is initialised and the `descriptorType` is set. The `descKeypoints(....)` in  `matching2D_Student.cpp` contains the actual keypoint description implementation with selector for `descriptorType`. And cv::DescriptorExtractor is used to extract the features.
+ 
+ 	- In  `MidTermProject_Camera_Student.cpp` : 
+ 
+ ```
         cv::Mat descriptors;
         string descriptorType = "ORB"; // BRISK, BRIEF, ORB, FREAK, AKAZE, SIFT  
         descKeypoints(dataBuffer.rbegin()->keypoints, dataBuffer.rbegin()->cameraImg, descriptors, descriptorType);
-   		```    
-       - In  `matching2D_Student.cpp` : 
-     		```
+ ```    
+	 - In  `matching2D_Student.cpp` : 
+ 
+ ```
 	void descKeypoints(vector<cv::KeyPoint> &keypoints, cv::Mat &img, cv::Mat &descriptors, string descriptorType)
 	{
 	    // select appropriate descriptor
@@ -101,15 +104,15 @@ Use cv::Rect::contains function to judge if the point is inside our ROI.
 	    t = ((double)cv::getTickCount() - t) / cv::getTickFrequency();
 	    cout << descriptorType << " descriptor extraction in " << 1000 * t / 1.0 << " ms" << endl;
 	}
-		```
+```
+
   
  - ####  MP.5 Descriptor Matching  and MP.6 Descriptor Distance Ratio 
  	- Task : Implement FLANN matching as well as k-nearest neighbor selection. Both methods must be selectable using the respective strings in the main function. Use the K-Nearest-Neighbor matching to implement the descriptor distance ratio test, which looks at the ratio of best vs. second-best match to decide whether to keep an associated pair of keypoints.
   	- Implementation : The Brute Force matcher `MAT_BF` and FLANN matcher `MAT_FLANN` are implemented in the `matchDescriptors(....)` function (in `matching2D_Student.cpp`) and matcher type is selectable based on the string set in main file `MidTermProject_Camera_Student.cpp`. The matching task for the selected matcher type is implemented based on the selector type. Nearest neighbor (best match) `SEL_NN` and K-Nearest-Neighbor(KNN) `SEL_KNN` selection is implemented and is selectable based on the string set in main file `MidTermProject_Camera_Student.cpp`. For KNN , k = 2 and the matches are filtered using descriptor distance ratio test where the descriptor distance ratio threshold is 0.8 for matching. Select the distance type based on the feature type. Use L2 distance for SIFT, and Hamming distance for binary descriptors. 
-      ```
+```
       // Find best matches for keypoints in two camera images based on several matching methods
-	void matchDescriptors(vector<cv::KeyPoint> &kPtsSource, vector<cv::KeyPoint> &kPtsRef, cv::Mat &descSource, cv::Mat &descRef,
-		              vector<cv::DMatch> &matches, std::string descriptorType, string matcherType, string selectorType)
+	void matchDescriptors(vector<cv::KeyPoint> &kPtsSource, vector<cv::KeyPoint> &kPtsRef, cv::Mat &descSource, cv::Mat &descRef, vector<cv::DMatch> &matches, std::string descriptorType, string matcherType, string selectorType)
 	{
 	    // configure matcher
 	    bool crossCheck = false;
@@ -162,59 +165,59 @@ Use cv::Rect::contains function to judge if the point is inside our ROI.
 		cout << "# keypoints removed = " << knn_matches.size() - matches.size() << endl;
 	    }
 	}
-        		```
+```
   
  - ####  MP.7 Performance Evaluation 1	
  	- Task : Count the number of keypoints on the preceding vehicle for all 10 images and take note of the distribution of their neighborhood size. Do this for all the detectors you have implemented.
   	- Evaluation : The number of keypoints are listed for each image. Only the keypoints on the preceeding vehicle are considered.  
 
 	
-  Detector |Img-1|	Img-2|Img-3	|Img-4	|Img-5	|Img-6	|Img-7	|Img-8	|Img-9	|Img-10
-----|-----|-----|-------|-------|-------|-----|-------|-------|-------|------
-**SHI-Tomasi**	|125|	118|	123|	120|	120|	113|	114|	123|	111|	112
-**Harris**		|17	|	14|		18|		21|		26|		43|		18|		31|		26|		34
-**FAST**		|149|	152|	150|	155|	149|	149|	156|	150|	138|	143
-**BRISK**		|264|	282|	282|	277|	297|	279|	289|	272|	266|	254
-**ORB**			|92	|	102|	106|	113|	109|	125|	130|	129|	127|	128
-**AKAZE**		|166|	157|	161|	155|	163|	164|	173|	175|	177|	179
-**SIFT**		|138|	132|	124|	137|	134|	140|	137|	148|	159|	137
+	  Detector |Img-1|	Img-2|Img-3	|Img-4	|Img-5	|Img-6	|Img-7	|Img-8	|Img-9	|Img-10
+	----|-----|-----|-------|-------|-------|-----|-------|-------|-------|------
+	**SHI-Tomasi**	|125|	118|	123|	120|	120|	113|	114|	123|	111|	112
+	**Harris**		|17	|	14|		18|		21|		26|		43|		18|		31|		26|		34
+	**FAST**		|149|	152|	150|	155|	149|	149|	156|	150|	138|	143
+	**BRISK**		|264|	282|	282|	277|	297|	279|	289|	272|	266|	254
+	**ORB**			|92	|	102|	106|	113|	109|	125|	130|	129|	127|	128
+	**AKAZE**		|166|	157|	161|	155|	163|	164|	173|	175|	177|	179
+	**SIFT**		|138|	132|	124|	137|	134|	140|	137|	148|	159|	137
 
   
  - #### MP.8 Performance Evaluation 2	
  	- Task : Count the number of matched keypoints for all 10 images using all possible combinations of detectors and descriptors. In the matching step, the BF approach is used with the descriptor distance ratio set to 0.8.
   	- Evaluation : Below is the table with the averages over all 10 images. 
 
-| Detector\Descriptor | BRISK | BRIEF | ORB | FREAK | AKAZE | SIFT |
-| --- | --- | --- |--- |--- |--- |--- |
-| **SHITOMASI** | 767 |944|908|768|N/A|927|
-| **HARRIS** | 393|460 |451|396|N/A|459|
-| **FAST** | 899 |1099|1071|878|N/A|1046|
-| **BRISK** | 1570 |1704|1514|1524|N/A|1646|
-| **ORB** | 751 |545|763|420|N/A|763|
-| **AKAZE** | 1215 |1266|1182|1187|1259|1270|
-| **SIFT** | 592 |702|Out of Memory|593|N/A|800|
+	| Detector\Descriptor | BRISK | BRIEF | ORB | FREAK | AKAZE | SIFT |
+	| --- | --- | --- |--- |--- |--- |--- |
+	| **SHITOMASI** | 767 |944|908|768|N/A|927|
+	| **HARRIS** | 393|460 |451|396|N/A|459|
+	| **FAST** | 899 |1099|1071|878|N/A|1046|
+	| **BRISK** | 1570 |1704|1514|1524|N/A|1646|
+	| **ORB** | 751 |545|763|420|N/A|763|
+	| **AKAZE** | 1215 |1266|1182|1187|1259|1270|
+	| **SIFT** | 592 |702|Out of Memory|593|N/A|800|
 
  
  -  #### MP.9 Performance Evaluation 3	
- - Task : Log the time it takes for keypoint detection and descriptor extraction. The results must be entered into a spreadsheet and based on this data, the TOP3 detector / descriptor combinations must be recommended as the best choice for our purpose of detecting keypoints on vehicles.
- - Evaluation : The above table lists the average time for keypoint detection and descriptor extraction over all 10 images.
+ 	- Task : Log the time it takes for keypoint detection and descriptor extraction. The results must be entered into a spreadsheet and based on this data, the TOP3 detector / descriptor combinations must be recommended as the best choice for our purpose of detecting keypoints on vehicles.
+ 	- Evaluation : The above table lists the average time for keypoint detection and descriptor extraction over all 10 images.
 
-| Detector\Descriptor | BRISK | BRIEF | ORB | FREAK | AKAZE | SIFT |
-| --- | --- | --- |--- |--- |--- |--- |
-| **SHITOMASI** | 17.98 |21.38|18.8|52.4079|N/A| 31.82|
-| **HARRIS** | 16.98|17.11 |16.5383|51.01| N/A| 32.73|
-| **FAST** | 3.36 |1.8786 |2.03823|41.549|N/A|35.71|
-| **BRISK** | 43.736 |44.159|47.966|89.2|N/A|92.17|
-| **ORB** | 8.54 |8.035|11.81|47.578|N/A|51.6748|
-| **AKAZE** | 103.108 |81.3247|84.51|149.97|173.611|128.77|
-| **SIFT** | 124.09 |146.49|Out of Memory|188.17|N/A|181.0381|
+	| Detector\Descriptor | BRISK | BRIEF | ORB | FREAK | AKAZE | SIFT |
+	| --- | --- | --- |--- |--- |--- |--- |
+	| **SHITOMASI** | 17.98 |21.38|18.8|52.4079|N/A| 31.82|
+	| **HARRIS** | 16.98|17.11 |16.5383|51.01| N/A| 32.73|
+	| **FAST** | 3.36 |1.8786 |2.03823|41.549|N/A|35.71|
+	| **BRISK** | 43.736 |44.159|47.966|89.2|N/A|92.17|
+	| **ORB** | 8.54 |8.035|11.81|47.578|N/A|51.6748|
+	| **AKAZE** | 103.108 |81.3247|84.51|149.97|173.611|128.77|
+	| **SIFT** | 124.09 |146.49|Out of Memory|188.17|N/A|181.0381|
 
 
 - TOP3 detector / descriptor combinations are chosen based on the achieve minimal processing time with significant matches. 
 	
-DETECTOR/DESCRIPTOR  | NUMBER OF KEYPOINTS | TIME
--------------------- | --------------------| --------
-FAST+BRIEF           | 1099 keypoints    | 1,87 ms 
-FAST+ORB             | 1071 keypoints    | 2.03 ms 
-FAST+BRISK           | 899 keypoints     | 3.36 ms 
--------------
+	DETECTOR/DESCRIPTOR  | NUMBER OF KEYPOINTS | TIME
+	-------------------- | --------------------| --------
+	FAST+BRIEF           | 1099 keypoints    | 1,87 ms 
+	FAST+ORB             | 1071 keypoints    | 2.03 ms 
+	FAST+BRISK           | 899 keypoints     | 3.36 ms 
+	-------------
